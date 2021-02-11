@@ -8,11 +8,12 @@ import { IntlShape } from "react-intl"
 
 ${commentLine(cm)}
 export default class ${cls} {
-private intl: IntlShape
-constructor(i: IntlShape) {
-this.intl = i
-}
-${content}
+  private intl: IntlShape
+  constructor(i: IntlShape) {
+    this.intl = i
+  }
+
+  ${content}
 }
 `
 }
@@ -25,19 +26,19 @@ export function outerShell(
 ): string {
 	if (!innerObject) {
 		return `
-${commentLine(cm)}
-get ${n}() {
-return ${content}
-}
+  ${commentLine(cm)}
+  get ${n}() {
+    return ${content}
+  }
 `
 	} else {
 		return `
-${commentLine(cm)}
-get ${n}() {
-return {
-${content}
-}
-}
+  ${commentLine(cm)}
+  get ${n}() {
+    return {
+      ${content}
+    }
+  }
 `
 	}
 }
@@ -50,39 +51,39 @@ export function innerShell(
 ): string {
 	if (!innerObject) {
 		return `
-${commentLine(cm)}
-${n}: ${content}
-`
+  ${commentLine(cm)}
+  ${n}: ${content}
+  `
 	} else {
 		return `
-${commentLine(cm)}
-${n}: {
-${content}
-}
+  ${commentLine(cm)}
+  ${n}: {
+    ${content}
+  }
 `
 	}
 }
 
 export function terminalSimple(id: string, desc: string, mes: string) {
 	return `this.intl.formatMessage({
-id: "${id}",
-description: "${desc}",
-defaultMessage: "${mes}",
-})
+    id: "${id}",
+    description: "${desc}",
+    defaultMessage: "${mes}",
+  })
 `
 }
 
 export function terminalFunction(par: string, par2: string, id: string, desc: string, mes: string) {
 	return `(${par}) =>
-this.intl.formatMessage(
-{
-id: "${id}",
-description: "${desc}",
-defaultMessage: "${mes}",
-},
-{
-${par2}
-}
+  this.intl.formatMessage(
+  {
+    id: "${id}",
+    description: "${desc}",
+    defaultMessage: "${mes}",
+  },
+  {
+    ${par2}
+  }
 )
 `
 }
