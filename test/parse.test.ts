@@ -1,14 +1,7 @@
 import { parse } from '../src'
+import { out } from './fixture/out'
 
-function parseAst(): string {
-	const p = parse('./test/fixture/fixture.ts')
-	if (p === undefined) {
-		fail('Parsing failed.')
-	}
-	return p
-}
-
-test('Outer', () => {
-	const ast = parseAst()
-	console.log(ast)
+test('Parsing', () => {
+	const ast = parse('./test/fixture/fixture.ts')
+	expect(ast).toBe(out)
 })

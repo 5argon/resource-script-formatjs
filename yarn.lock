@@ -5831,11 +5831,11 @@ fsevents@^2.1.2:
 
 "resource-script@file:./../resource-script::locator=resource-script-formatjs%40workspace%3A.":
   version: 1.0.0
-  resolution: "resource-script@file:./../resource-script#./../resource-script::hash=a6d813&locator=resource-script-formatjs%40workspace%3A."
+  resolution: "resource-script@file:./../resource-script#./../resource-script::hash=0e0873&locator=resource-script-formatjs%40workspace%3A."
   dependencies:
     tsutils: ^3.20.0
     typescript: ^4.1.4
-  checksum: dd9d9f83642e059fee156cda79e7ea0f94d684a25730b064a74c6b87663baf0bfe33ca95573fca3d72a0abd62a26ac31b234c2852420d7f23d5613fab395eafb
+  checksum: b87f0f44bba7a45c1b5689c7229adc6391cee3187037a2d87ab85c19e4d33038099bef7f428faf98a84ad7ecc6d12869a68f3529506f9f069369e3159178959c
   languageName: node
   linkType: hard
 
