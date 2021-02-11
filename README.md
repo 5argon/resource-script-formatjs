@@ -1,6 +1,6 @@
 # resource-script-formatjs
 
-Author Format.js terms declaration in **Resource Script** instead. Format.JS "accessor class file" can be generated from it. This class file make the call site cleaner, and Format.JS terms extraction works as expected.
+Author Format.js terms declaration in [Resource Script](https://github.com/5argon/resource-script) instead. Format.JS "accessor class file" can be generated from it. This class file make the call site cleaner, and Format.JS terms extraction works as expected.
 
 ```
 yarn rs-to-formatjs ./my-file-1.rs.ts ./my-file-2.rs.ts
@@ -15,6 +15,12 @@ Produces these accessor files on the same location as original :
 The files aren't formatted nicely so maybe you can run your own `eslint` or `prettier` style on them...
 
 See how the Resorce Script looks like and how the accessor file looks like in the next section.
+
+## Installation
+
+```
+yarn add resource-script-formatjs
+```
 
 ## Motivations
 
@@ -129,7 +135,7 @@ export const textResource = {
   home: {
     /** Title text */
     title: 'Title',
-    /*+ Description text */
+    /** Description text */
     description: 'Description',
     /** Days left until release date */
     daysLeft: (days: number) => `Days Left : ${days}`,
