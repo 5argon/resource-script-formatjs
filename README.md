@@ -20,17 +20,17 @@ See how the Resorce Script looks like and how the accessor file looks like in th
 
 First you should survey roughly how these packages works, because it highlights i18n problems in production.
 
--   [Format.JS / react-intl](https://formatjs.io/)
--   [i18next / react-i18next](https://react.i18next.com/)
--   [LinguiJS](https://lingui.js.org/)
--   [rosetta](https://github.com/lukeed/rosetta)
+- [Format.JS / react-intl](https://formatjs.io/)
+- [i18next / react-i18next](https://react.i18next.com/)
+- [LinguiJS](https://lingui.js.org/)
+- [rosetta](https://github.com/lukeed/rosetta)
 
 Common themes :
 
--   Programmer can do something better than hard-coding the string, but usually more verbose.
--   Those things could be generated into a (default language) resource file. Maybe by tools that parse AST (Abstract Syntax Key) and try to get the call site of each terms. (All of the examples except `rosetta` do this in different styles.)
--   Resource files can be uploaded to online translation service with nice UI and authentication, to get help from remote translators, etc.
--   You get the same kind of resource files back times the languages you want to support. The code that replaces string hard-coding can select the right resource file to use.
+- Programmer can do something better than hard-coding the string, but usually more verbose.
+- Those things could be generated into a (default language) resource file. Maybe by tools that parse AST (Abstract Syntax Key) and try to get the call site of each terms. (All of the examples except `rosetta` do this in different styles.)
+- Resource files can be uploaded to online translation service with nice UI and authentication, to get help from remote translators, etc.
+- You get the same kind of resource files back times the languages you want to support. The code that replaces string hard-coding can select the right resource file to use.
 
 I prefer Format.JS since I would like to use ICU syntax.
 
@@ -70,55 +70,55 @@ Then inside would be a proper declaration of what Format.JS required. Basically,
 
 ```ts
 export default class TextResource {
-	private intl: IntlShape
-	get home() {
-		return {
-			/** Title text */
-			title: this.intl.formatMessage({
-				id: 'home.title',
-				description: 'Title text',
-				defaultMessage: 'Title',
-			}),
+  private intl: IntlShape
+  get home() {
+    return {
+      /** Title text */
+      title: this.intl.formatMessage({
+        id: 'home.title',
+        description: 'Title text',
+        defaultMessage: 'Title',
+      }),
 
-			/** Description text */
-			description: this.intl.formatMessage({
-				id: 'home.description',
-				description: 'Description text',
-				defaultMessage: 'Description',
-			}),
+      /** Description text */
+      description: this.intl.formatMessage({
+        id: 'home.description',
+        description: 'Description text',
+        defaultMessage: 'Description',
+      }),
 
-			/** Days left until release date */
-			daysLeft: (days: number) =>
-				this.intl.formatMessage(
-					{
-						id: 'home.daysLeft',
-						description: 'Days left until release date',
-						defaultMessage: 'Days Left : {days}',
-					},
-					{ days: days },
-				),
+      /** Days left until release date */
+      daysLeft: (days: number) =>
+        this.intl.formatMessage(
+          {
+            id: 'home.daysLeft',
+            description: 'Days left until release date',
+            defaultMessage: 'Days Left : {days}',
+          },
+          { days: days },
+        ),
 
-			/** Visitor name */
-			yourNameIs: (name: string) =>
-				this.intl.formatMessage(
-					{
-						id: 'home.yourNameIs',
-						description: 'Visitor name',
-						defaultMessage: 'Your Name Is : {name}',
-					},
-					{ name: name },
-				),
-		}
-	}
+      /** Visitor name */
+      yourNameIs: (name: string) =>
+        this.intl.formatMessage(
+          {
+            id: 'home.yourNameIs',
+            description: 'Visitor name',
+            defaultMessage: 'Your Name Is : {name}',
+          },
+          { name: name },
+        ),
+    }
+  }
 }
 ```
 
 As you can see, the call site is nice and type checked now, but we moved the ugliness into this accessor instead. Making this file is equally time consuming.
 
--   Each entry is extremely verbose. You can barely see 2 terms next to each other since they are so far apart. You lose an ability to perform a quick overview over the terms in similar area, something that would be great now that we have a hierarchy.
--   The hierarchy is still an illusion, you need to provide `id` that repeats the hierarchy you just made. (e.g. `home.` being repeated for all terms here.)
--   You can still mistype the `{days}` ICU placeholder string.
--   The parameter part is an `any`. You can also mistype the object key here.
+- Each entry is extremely verbose. You can barely see 2 terms next to each other since they are so far apart. You lose an ability to perform a quick overview over the terms in similar area, something that would be great now that we have a hierarchy.
+- The hierarchy is still an illusion, you need to provide `id` that repeats the hierarchy you just made. (e.g. `home.` being repeated for all terms here.)
+- You can still mistype the `{days}` ICU placeholder string.
+- The parameter part is an `any`. You can also mistype the object key here.
 
 ## Solution
 
@@ -126,25 +126,25 @@ That class declaration is inevitable for Format.JS to work, but for human progra
 
 ```ts
 export const textResource = {
-	home: {
-		/** Title text */
-		title: 'Title',
-		/*+ Description text */
-		description: 'Description',
-		/** Days left until release date */
-		daysLeft: (days: number) => `Days Left : ${days}`,
-		/** Visitor name */
-		yourNameIs: (name: string) => `Your Name Is : ${name}`,
-	},
+  home: {
+    /** Title text */
+    title: 'Title',
+    /*+ Description text */
+    description: 'Description',
+    /** Days left until release date */
+    daysLeft: (days: number) => `Days Left : ${days}`,
+    /** Visitor name */
+    yourNameIs: (name: string) => `Your Name Is : ${name}`,
+  },
 }
 ```
 
 This is not just a template, it happened to be a valid TypeScript code as well.
 
--   You gained syntax highlighting. This is quite useful in strings that has a placeholder because the variable got colored differently.
--   You can auto format with tools like `prettier` or `eslint`. Note that `eslint` can turn `+` string concatenation into templated string like above.
--   With real variable used in the string, it is not possible to make a mistake.
--   When strings are close to each other in the same file like this, it is possible to review overall strings without even going into your UI code where you used the string. I think this is even better than having the string near the UI code.
+- You gained syntax highlighting. This is quite useful in strings that has a placeholder because the variable got colored differently.
+- You can auto format with tools like `prettier` or `eslint`. Note that `eslint` can turn `+` string concatenation into templated string like above.
+- With real variable used in the string, it is not possible to make a mistake.
+- When strings are close to each other in the same file like this, it is possible to review overall strings without even going into your UI code where you used the string. I think this is even better than having the string near the UI code.
 
 Making this an ideal way of authoring terms to use in the code.
 
