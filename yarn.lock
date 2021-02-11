@@ -5647,7 +5647,7 @@ fsevents@^2.1.2:
     eslint-plugin-simple-import-sort: ^7.0.0
     jest: ^26.6.3
     prettier: ^2.2.1
-    resource-script: "file:./../resource-script"
+    resource-script: ^1.0.0
     ts-jest: ^26.5.1
     tsutils: ^3.20.0
     typescript: ^4.1.4
@@ -5657,18 +5657,32 @@ fsevents@^2.1.2:
   languageName: unknown
   linkType: soft
 
-"resource-script@file:./../resource-script::locator=resource-script-formatjs%40workspace%3A.":
-  version: 1.0.0
-  resolution: "resource-script@file:./../resource-script#./../resource-script::hash=df9297&locator=resource-script-formatjs%40workspace%3A."
+"resource-script@portal:/Users/Sargon/Desktop/resource-script::locator=resource-script-formatjs%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "resource-script@portal:/Users/Sargon/Desktop/resource-script::locator=resource-script-formatjs%40workspace%3A."
   dependencies:
+    "@types/jest": ^26.0.20
+    "@types/node": ^14.14.25
+    "@types/yargs": ^16.0.0
+    "@typescript-eslint/eslint-plugin": ^4.15.0
+    "@typescript-eslint/parser": ^4.15.0
+    "@yarnpkg/pnpify": ^2.4.0
+    eslint: ^7.19.0
+    eslint-config-prettier: ^7.2.0
+    eslint-import-resolver-node: ^0.3.4
+    eslint-plugin-import: ^2.22.1
+    eslint-plugin-prettier: ^3.3.1
+    eslint-plugin-simple-import-sort: ^7.0.0
+    jest: ^26.6.3
+    prettier: ^2.2.1
+    ts-jest: ^26.5.1
     tsutils: ^3.20.0
     typescript: ^4.1.4
     yargs: ^16.2.0
   bin:
     resource-script: ./dist/bin-commands.js
-  checksum: 1b90c7174842f505de1a842dd68bc59dcc5ce32089fe4ab4be58bbe3805418b91abfd185b79d4bf7be9752d555dcb12b5ede695ecee53d334e6b37bc173b1dae
   languageName: node
-  linkType: hard
+  linkType: soft
 
 "responselike@npm:^2.0.0":
   version: 2.0.0

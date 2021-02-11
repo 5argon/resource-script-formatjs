@@ -1,43 +1,65 @@
 {
-	"name": "resource-script-formatjs",
-	"version": "1.0.0",
-	"author": {
-		"name": "Sirawat Pitaksarit",
-		"email": "pyasry@gmail.com",
-		"url": "https://5argon.info"
-	},
-	"bin": {
-		"rs-to-formatjs": "./dist/bin-commands.js"
-	},
-	"scripts": {
-		"watch": "tsc -b -w",
-		"build": "tsc -b",
-		"test": "jest",
-		"rs-to-formatjs": "node ./dist/bin-commands.js"
-	},
-	"main": "dist/index.js",
-	"license": "MIT",
-	"dependencies": {
-		"resource-script": "file:./../resource-script",
-		"tsutils": "^3.20.0",
-		"typescript": "^4.1.4",
-		"yargs": "^16.2.0"
-	},
-	"devDependencies": {
-		"@types/jest": "^26.0.20",
-		"@types/node": "^14.14.25",
-		"@types/yargs": "^16.0.0",
-		"@typescript-eslint/eslint-plugin": "^4.15.0",
-		"@typescript-eslint/parser": "^4.15.0",
-		"@yarnpkg/pnpify": "^2.4.0",
-		"eslint": "^7.19.0",
-		"eslint-config-prettier": "^7.2.0",
-		"eslint-import-resolver-node": "^0.3.4",
-		"eslint-plugin-import": "^2.22.1",
-		"eslint-plugin-prettier": "^3.3.1",
-		"eslint-plugin-simple-import-sort": "^7.0.0",
-		"jest": "^26.6.3",
-		"prettier": "^2.2.1",
-		"ts-jest": "^26.5.1"
-	}
+  "name": "resource-script-formatjs",
+  "description": "Author Format.js terms declaration in **Resource Script** instead. Format.JS accessor class file can be generated from it. This class file make the call site cleaner, and Format.JS terms extraction works as expected.",
+  "keywords": [
+    "Format.JS",
+    "resource script"
+  ],
+  "homepage": "http://github.com/5argon/resource-script-formatjs",
+  "bugs": {
+    "url": "https://github.com/5argon/resource-script-formatjs/issues",
+    "email": "pyasry@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github:5argon/resource-script-formatjs"
+  },
+  "version": "1.0.0",
+  "author": {
+    "name": "Sirawat Pitaksarit",
+    "email": "pyasry@gmail.com",
+    "url": "https://5argon.info"
+  },
+  "bin": {
+    "rs-to-formatjs": "./dist/bin-commands.js"
+  },
+  "scripts": {
+    "watch": "tsc -b -w",
+    "build": "tsc -b",
+    "test": "jest",
+    "rs-to-formatjs": "node ./dist/bin-commands.js"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
+  "license": "MIT",
+  "files": [
+    "README.md",
+    "dist"
+  ],
+  "dependencies": {
+    "resource-script": "^1.0.0",
+    "tsutils": "^3.20.0",
+    "typescript": "^4.1.4",
+    "yargs": "^16.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.25",
+    "@types/yargs": "^16.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
+    "@yarnpkg/pnpify": "^2.4.0",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-import-resolver-node": "^0.3.4",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.5.1"
+  },
+  "resolutions": {
+    "resource-script": "portal:/Users/Sargon/Desktop/resource-script"
+  }
 }

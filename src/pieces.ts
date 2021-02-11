@@ -1,9 +1,9 @@
 export function commentLine(comment: string | undefined) {
-	return comment ? '/** ' + comment + ' */' : ''
+  return comment ? '/** ' + comment + ' */' : ''
 }
 
 export function beginning(cls: string, cm: string | undefined, content: string) {
-	return `
+  return `
 import { IntlShape } from "react-intl"
 
 ${commentLine(cm)}
@@ -19,20 +19,20 @@ export default class ${cls} {
 }
 
 export function outerShell(
-	n: string,
-	cm: string | undefined,
-	content: string,
-	innerObject: boolean,
+  n: string,
+  cm: string | undefined,
+  content: string,
+  innerObject: boolean,
 ): string {
-	if (!innerObject) {
-		return `
+  if (!innerObject) {
+    return `
   ${commentLine(cm)}
   get ${n}() {
     return ${content}
   }
 `
-	} else {
-		return `
+  } else {
+    return `
   ${commentLine(cm)}
   get ${n}() {
     return {
@@ -40,32 +40,32 @@ export function outerShell(
     }
   }
 `
-	}
+  }
 }
 
 export function innerShell(
-	n: string,
-	cm: string | undefined,
-	content: string,
-	innerObject: boolean,
+  n: string,
+  cm: string | undefined,
+  content: string,
+  innerObject: boolean,
 ): string {
-	if (!innerObject) {
-		return `
+  if (!innerObject) {
+    return `
   ${commentLine(cm)}
   ${n}: ${content}
   `
-	} else {
-		return `
+  } else {
+    return `
   ${commentLine(cm)}
   ${n}: {
     ${content}
   }
 `
-	}
+  }
 }
 
 export function terminalSimple(id: string, desc: string, mes: string) {
-	return `this.intl.formatMessage({
+  return `this.intl.formatMessage({
     id: "${id}",
     description: "${desc}",
     defaultMessage: "${mes}",
@@ -74,7 +74,7 @@ export function terminalSimple(id: string, desc: string, mes: string) {
 }
 
 export function terminalFunction(par: string, par2: string, id: string, desc: string, mes: string) {
-	return `(${par}) =>
+  return `(${par}) =>
   this.intl.formatMessage(
   {
     id: "${id}",
