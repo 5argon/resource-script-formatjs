@@ -148,4 +148,4 @@ This is not just a template, it happened to be a valid TypeScript code as well.
 
 Making this an ideal way of authoring terms to use in the code.
 
-The format presented above is called **Resource Script**, which I originally made to solve this problem.
+The format presented above is called [**Resource Script**](https://github.com/5argon/resource-script), which I originally made to solve this problem.
