@@ -4,9 +4,9 @@ import { exit } from 'process'
 import yargs from 'yargs'
 import { parse } from './parse'
 
-function changeExtension(file: string, extension: string) {
+function transformName(file: string, extension: string) {
 	const basename = path.basename(file, path.extname(file))
-	return path.join(path.dirname(file), basename + extension)
+	return path.join(path.dirname(file), basename + '.acc' + extension)
 }
 
 const argv = yargs(process.argv.slice(2))
@@ -20,15 +20,16 @@ const argv = yargs(process.argv.slice(2))
 		(argv) => {},
 	).argv
 
-if (argv._.length < 2) {
+if (argv._.length < 1) {
 	console.error('Must provide one or more Resource Script file.')
 	exit()
 }
 
-argv._.slice(1).forEach((x) => {
+argv._.forEach((x) => {
+	console.log(x)
 	if (typeof x === 'string') {
-		const json = parse(x)
-		fs.writeFileSync(changeExtension(x, '.ts'), json)
+		const parsed = parse(x)
+		fs.writeFileSync(transformName(x, '.ts'), parsed)
 	}
 })
 
