@@ -14,7 +14,7 @@
     "type": "git",
     "url": "github:5argon/resource-script-formatjs"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "Sirawat Pitaksarit",
     "email": "pyasry@gmail.com",
@@ -37,7 +37,7 @@
     "dist"
   ],
   "dependencies": {
-    "resource-script": "^1.0.0",
+    "resource-script": "^1.1.1",
     "tsutils": "^3.20.0",
     "typescript": "^4.1.4",
     "yargs": "^16.2.0"

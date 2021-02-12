@@ -5647,7 +5647,7 @@ fsevents@^2.1.2:
     eslint-plugin-simple-import-sort: ^7.0.0
     jest: ^26.6.3
     prettier: ^2.2.1
-    resource-script: ^1.0.0
+    resource-script: ^1.1.1
     ts-jest: ^26.5.1
     tsutils: ^3.20.0
     typescript: ^4.1.4
@@ -5657,16 +5657,16 @@ fsevents@^2.1.2:
   languageName: unknown
   linkType: soft
 
-"resource-script@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "resource-script@npm:1.0.0"
+"resource-script@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "resource-script@npm:1.1.1"
   dependencies:
     tsutils: ^3.20.0
     typescript: ^4.1.4
     yargs: ^16.2.0
   bin:
     resource-script: ./dist/bin-commands.js
-  checksum: 076073ea8821089691a61fd9eb3453035d75720f45f4fc95b4dcf4e4a4ee8ae23696075b0af409ea0af1dc4cb95e2d8fdbd3d00e336180129cdeffeed13a3c43
+  checksum: fe2a67231411a02a584b221d93d74c89d7582736700d8b2834664aae4998e8589ced176836a34a013f8ea661c143ed1c54b0deb58d2245e8cd7198575e113a9f
   languageName: node
   linkType: hard
 

@@ -7,25 +7,19 @@ import {
   isTextTemplated,
   ValueNode,
   isNamedTuple,
+  getRealKey,
+  getConcatenatedKey,
 } from 'resource-script'
 import { beginning, innerShell, outerShell, terminalFunction, terminalSimple } from './pieces'
 
-function trueKey(k: string[]): string {
-  return k[k.length - 1]
-}
-
-function concatKeys(k: string[]): string {
-  return k.join('.')
-}
-
 export function astProcess(a: Ast): string {
-  return beginning(trueKey(a.keys), a.comment, firstContent(a.children))
+  return beginning(getRealKey(a), a.comment, firstContent(a.children))
 }
 
 function firstContent(a: ValueNode[]): string {
   return a
     .map<string>((x) => {
-      const name = trueKey(x.keys)
+      const name = getRealKey(x)
       if (isGroup(x)) {
         return outerShell(name, x.comment, innerContent(x.children), true)
       } else {
@@ -38,7 +32,7 @@ function firstContent(a: ValueNode[]): string {
 function innerContent(a: ValueNode[]): string {
   return a
     .map<string>((x) => {
-      const name = trueKey(x.keys)
+      const name = getRealKey(x)
       if (isGroup(x)) {
         return innerShell(name, x.comment, innerContent(x.children), true)
       } else {
@@ -66,12 +60,12 @@ function makeTerminal(x: ValueNode): string {
     return terminalFunction(
       par,
       par2,
-      concatKeys(x.keys),
+      getConcatenatedKey(x),
       x.comment ?? '',
       defaultMessageFromTokens(x.tokens),
     )
   } else if (isText(x)) {
-    return terminalSimple(concatKeys(x.keys), x.comment ?? '', x.text)
+    return terminalSimple(getConcatenatedKey(x), x.comment ?? '', x.text)
   }
   throw new Error('Only expecting value as string or templated string (arrow function).')
 }
