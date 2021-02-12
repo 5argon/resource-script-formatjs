@@ -19,8 +19,10 @@ See how the Resorce Script looks like and how the accessor file looks like in th
 ## Installation
 
 ```
-yarn add resource-script-formatjs
+yarn add -D resource-script-formatjs
 ```
+
+It is likely that processing Resource Script to Format.JS is a development-only dependency.
 
 ## Motivations
 
